@@ -1,4 +1,4 @@
-# Transcript api
+# Chat bot
 
 ## Table of Contents
 
