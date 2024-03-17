@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatGPT UI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .chat-container {
+            max-width: 600px;
+            margin: 20px auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-image:url('images/JZL02953.JPG'); /* Add the path to your background image here */
+            background-size: cover;
+            background-position: center;
+        }
+
+        .chat-messages {
+            padding: 10px;
+            list-style-type: none;
+            margin: 0;
+        }
+
+        .message {
+            background-color: #ffffff;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+            position: relative;
+            max-width: 80%;
+        }
+
+        .user-message {
+            margin-left: auto;
+            background-color: #dcf8c6;
+        }
+
+        .message-text {
+            word-wrap: break-word;
+        }
+
+        .message-time {
+            font-size: 0.8em;
+            color: #777;
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+        }
+
+        .user-input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            margin: 0 10px;
+            box-sizing: border-box;
+        }
+
+        .user-input:focus {
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .submit-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- In HTML -->
+    <div class="chat-container">
+    <!-- Chat container content goes here -->
+
+        <ul class="chat-messages">
+            <li class="message">Hello there!<span class="message-time">12:30 PM</span></li>
+            <li class="message user-message">Hi! How can I help you?<span class="message-time">12:31 PM</span></li>
+        </ul>
+        <form id="user-form" onsubmit="sendMessage(); return false;">
+            <input type="text" id="user-input" class="user-input" placeholder="Type your message...">
+            <button type="submit" class="submit-button">Send</button>
+        </form>
+    </div>
+
+    <script>
+        function sendMessage() {
+            var userInput = document.getElementById("user-input");
+            var message = userInput.value.trim();
+            
+            if (message !== "") {
+                var chatMessages = document.querySelector(".chat-messages");
+                var li = document.createElement("li");
+                li.textContent = message;
+                li.className = "message user-message";
+                var span = document.createElement("span");
+                span.className = "message-time";
+                var date = new Date();
+                var time = date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                span.textContent = time;
+                li.appendChild(span);
+                chatMessages.appendChild(li);
+                userInput.value = "";
+            }
+        }
+    </script>
+</body>
+</html>
